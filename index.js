@@ -1,9 +1,13 @@
 const express = require("express");
 const mustacheExpress = require("mustache-express");
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const mongoose = require('mongoose');
 const path = require("path");
+const db = require('./config/database')
 
-//Appels modules et fichiers
+//variables de modules
 const app = express();
+
 
 //app config
 app.engine("mustache", mustacheExpress());
@@ -22,6 +26,3 @@ app.listen(3000, () => {
 // Routes
 //req : informations sur la requpête (req.query, req.params, req.body, req.headers, req.method, req.url, req.cookies)
 //res : methodes pour envoyer des réponses au client (une seule possible) (res.send(), res.json(), res.render(), res.redirect(), res.statut(), res.set(), res.cookie())
-app.get('/', (req, res) => {
-    res.send('ça marche');
-});
