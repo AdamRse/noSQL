@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Chez mwa</title>
+</head>
+<body>
+    <h1>Créer une annonce</h1>
+    <form action="/annonces/create" method="post">
+  <div>
+    <label for="titre">Titre:</label>
+    <input type="text" id="titre" name="titre" required>
+  </div>
+  <div>
+    <label for="prix">Prix:</label>
+    <input type="number" id="prix" name="prix" required>
+  </div>
+  <div>
+    <label for="caracteristiques">Caractéristiques:</label>
+    <input type="text" id="caracteristiques" name="caracteristiques" required>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+  </div>
+  <div>
+    <label for="surfaceM2">Surface (m²):</label>
+    <input type="number" id="surfaceM2" name="surfaceM2" required>
+  </div>
+  <div>
+    <label for="localisation">Localisation:</label>
+    <input type="text" id="localisation" name="localisation" required>
+  </div>
+  <div>
+    <button type="submit">Ajouter</button>
+  </div>
+    </form>
+</body>
+</html>

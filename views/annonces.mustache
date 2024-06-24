@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Chez mwa</title>
+</head>
+<body>
+    <h1>Liste des annonces</h1>
+    <ul>
+        {{#annonces}}
+        <li>
+            <h2>{{titre}}</h2>
+            <p><strong>Prix:</strong> {{prix}} €</p>
+            <p><strong>Caractéristiques:</strong> {{caracteristiques}}</p>
+            <p><strong>Description:</strong> {{description}}</p>
+            <p><strong>Surface:</strong> {{surfaceM2}} m²</p>
+            <p><strong>Localisation:</strong> {{localisation}}</p>
+            <p><strong>Date de publication:</strong> {{datePublication}}</p>
+        </li>
+        {{/annonces}}
+    </ul>
+</body>
+</html>
