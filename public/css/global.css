@@ -17,6 +17,44 @@ a{
     font-size: 1.1rem;
     padding: 0 1rem;
 }
+a:hover{
+    background-color: rgba(0, 0, 0, .1);
+}
 a:visited{
     color: inherit;
+}
+.cardList{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.imoCard{
+    width: 30%;
+    margin: 1rem;
+}
+.imoCard h2{
+    text-align: center;
+    border-bottom: 1px solid #000;
+    margin-bottom: 1rem;
+}
+.imoCard .menu{
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+.imoCard button{
+    padding: .5rem;
+    cursor: pointer;
+}
+.imoCard .details{
+    color: #0d253b;
+    background-color: #9bc2e5;
+}
+.imoCard .modifier{
+    color: #2d192e;
+    background-color: #d5bad7;
+}
+.imoCard .supprimer{
+    color: #390f0f;
+    background-color: #d2a8a8;
 }

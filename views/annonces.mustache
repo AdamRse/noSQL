@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/global.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
     <title>Chez mwa</title>
+    <script>
+        function confirmer(e, titre){
+            if(!confirm("Supprimer l'annonce\n"+titre+" ?")){
+                e.preventDefault();
+            }
+        }
+    </script>
 </head>
+
 <body>
     <h1>Liste des annonces</h1>
-    <ul>
+    <div class="cardList">
         {{#annonces}}
-        <li>
-            <h2>{{titre}}</h2>
-            <p><strong>Prix:</strong> {{prix}} €</p>
-            <p><strong>Caractéristiques:</strong> {{caracteristiques}}</p>
-            <p><strong>Description:</strong> {{description}}</p>
-            <p><strong>Surface:</strong> {{surfaceM2}} m²</p>
-            <p><strong>Localisation:</strong> {{localisation}}</p>
-            <p><strong>Date de publication:</strong> {{datePublication}}</p>
-        </li>
+        <div class="imoCard">
+            <a href="/annonces/{{id}}">
+                <h2>{{titre}}</h2>
+            </a>
+            <div class="prix"><strong>Prix:</strong> {{prix}} €</div>
+            <div class="prix"><strong>Surface:</strong> {{surfaceM2}} m²</div>
+            <div class="prix"><strong>Date de publication:</strong> {{datePublication}}</div>
+            <div class="menu">
+                <button class="details">
+                    <a href="/annonces/{{id}}">
+                        Détails
+                    </a>
+                </button>
+                <button class="modifier">
+                    <a href="/annonces/update/{{id}}">
+                        Modifier
+                    </a>
+                </button>
+                <button class="supprimer">
+                    <a href="/annonces/delete/{{id}}" data-titre="{{titre}}" onclick="confirmer(event, this.dataset.titre)">
+                        Supprimer
+                    </a>
+                </button>
+            </div>
+        </div>
         {{/annonces}}
-    </ul>
+    </div>
 </body>
+
 </html>

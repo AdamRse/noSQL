@@ -29,5 +29,44 @@ router.post('/create', async (req, res) => {
         res.statut(500).send("Erreur de sauvegarde en BDD");
     }
 });
+router.get('/:id', async (req, res) => {
+    const annonce = await Annonces.findById(req.params.id);
+    res.render("annonce", annonce);
+});
+router.get('/delete/:id', async (req, res) => {
+    const annonce = await Annonces.findById(req.params.id);
+    if(annonce){
+        console.log(annonce);
+        await Annonces.deleteOne({_id: annonce._id});
+        res.redirect("/annonces");
+    }
+    else{
+        const error = {
+            titre:"Impossible de supprimer l'annonce"
+            ,detail:"l'identifiant passé ne correspond à aucune annonce."
+        }
+        res.render("error", error);
+    }
+    
+});
+router.get('/update/:id', async (req, res) => {
+    const annonce = await Annonces.findById(req.params.id);
+    res.render("update", annonce)
+});
 
+router.post('/update/:id', async (req, res) => {
+    const { titre, prix, caracteristiques, description, surfaceM2, localisation } = req.body;
+    const annonce = Annonces.find(req.params.id);
+    if(annonce){
+        await Annonces.findByIdAndUpdate(req.params.id, { titre, prix, caracteristiques, description, surfaceM2, localisation } )
+        res.redirect("/annonces");
+    }
+    else{
+        const error = {
+            titre:"Impossible de supprimer l'annonce"
+            ,detail:"l'identifiant passé ne correspond à aucune annonce."
+        }
+        res.render("error", error);
+    }
+});
 module.exports = router;
