@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const Annonces = require("../models/Annonce");
 
-router.get('/', (req, res) => {
-    const annonces = Annonces.find();
+router.get('/', async (req, res) => {//Sans async, impossible d'utiliser await, et la lage s'affiche avant d'avoir la réponse
+    const annonces = await Annonces.find();
     res.render("annonces", { annonces });
 });
 router.get('/create', (req, res) => {
     res.render("create");
 });
-router.post('/create', (req, res) => {
+router.post('/create', async (req, res) => {
     const { titre, prix, caracteristiques, description, surfaceM2, localisation } = req.body;
     const annonce = new Annonces({
         titre,
@@ -19,11 +19,14 @@ router.post('/create', (req, res) => {
         surfaceM2,
         localisation
     })
-    if(annonce.save()){
+    console.log(annonce);
+    try{
+        await annonce.save();
         res.redirect("/annonces");
+
     }
-    else{
-        res.send("Erreur de sauvegarde en BDD");
+    catch(err){
+        res.statut(500).send("Erreur de sauvegarde en BDD");
     }
 });
 
