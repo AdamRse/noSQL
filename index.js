@@ -24,10 +24,6 @@ app.listen(3000, () => {
 //routes
 app.use("/annonces", require("./routes/annonces"));
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
 
 db();
 
